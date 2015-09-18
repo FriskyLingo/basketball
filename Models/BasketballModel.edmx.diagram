@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2c930331c0d4a63ae510f77429b94d6" Name="Diagram1">
+        <EntityTypeShape EntityType="BasketballModel.Game" Width="1.5" PointX="4.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.Game_Players" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.Game_Round_PlayerShots" Width="1.5" PointX="8" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.Game_Rounds" Width="1.5" PointX="8" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.lu_Location" Width="1.5" PointX="2.125" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.lu_Player" Width="1.5" PointX="13.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.lu_Round" Width="1.5" PointX="10.375" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Players__Game" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Round_PlayerShots__Game" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Rounds__Game" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Players__lu_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Round_PlayerShots__Game_Rounds" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Round_PlayerShots__lu_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game_Rounds__lu_Round" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK__Game__lu_Location" />
+        <AssociationConnector Association="BasketballModel.FK__Game__lu_Player" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

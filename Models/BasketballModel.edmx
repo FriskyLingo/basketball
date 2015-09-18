@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BasketballModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locationId" Type="int" Nullable="false" />
+          <Property Name="dateAndTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="winner" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game_Players">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gameId" Type="int" Nullable="false" />
+          <Property Name="playerId" Type="int" Nullable="false" />
+          <Property Name="shootingOrder" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game_Round_PlayerShots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gameId" Type="int" Nullable="false" />
+          <Property Name="gameRoundId" Type="int" Nullable="false" />
+          <Property Name="playerId" Type="int" Nullable="false" />
+          <Property Name="shotAttempt" Type="int" Nullable="false" />
+          <Property Name="shotResult" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game_Rounds">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gameId" Type="int" Nullable="false" />
+          <Property Name="roundId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lu_Location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="color" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="distance" Type="int" Nullable="false" />
+          <Property Name="difficulty" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="lu_Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="shootingHand" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lu_Round">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roundNumber" Type="int" Nullable="false" />
+          <Property Name="shotAttempts" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Game__lu_Location">
+          <End Role="lu_Location" Type="Self.lu_Location" Multiplicity="1" />
+          <End Role="Game" Type="Self.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="locationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game__lu_Player">
+          <End Role="lu_Player" Type="Self.lu_Player" Multiplicity="1" />
+          <End Role="Game" Type="Self.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="winner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Players__Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Game_Players" Type="Self.Game_Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Players">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Players__lu_Player">
+          <End Role="lu_Player" Type="Self.lu_Player" Multiplicity="1" />
+          <End Role="Game_Players" Type="Self.Game_Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Players">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Round_PlayerShots__Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Game_Round_PlayerShots" Type="Self.Game_Round_PlayerShots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Round_PlayerShots">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Round_PlayerShots__Game_Rounds">
+          <End Role="Game_Rounds" Type="Self.Game_Rounds" Multiplicity="1" />
+          <End Role="Game_Round_PlayerShots" Type="Self.Game_Round_PlayerShots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game_Rounds">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Round_PlayerShots">
+              <PropertyRef Name="gameRoundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Round_PlayerShots__lu_Player">
+          <End Role="lu_Player" Type="Self.lu_Player" Multiplicity="1" />
+          <End Role="Game_Round_PlayerShots" Type="Self.Game_Round_PlayerShots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Round_PlayerShots">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Rounds__Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Game_Rounds" Type="Self.Game_Rounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Rounds">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Rounds__lu_Round">
+          <End Role="lu_Round" Type="Self.lu_Round" Multiplicity="1" />
+          <End Role="Game_Rounds" Type="Self.Game_Rounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Round">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Rounds">
+              <PropertyRef Name="roundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BasketballModelStoreContainer">
+          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Game_Players" EntityType="Self.Game_Players" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Game_Round_PlayerShots" EntityType="Self.Game_Round_PlayerShots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Game_Rounds" EntityType="Self.Game_Rounds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lu_Location" EntityType="Self.lu_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lu_Player" EntityType="Self.lu_Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lu_Round" EntityType="Self.lu_Round" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Game__lu_Location" Association="Self.FK__Game__lu_Location">
+            <End Role="lu_Location" EntitySet="lu_Location" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game__lu_Player" Association="Self.FK__Game__lu_Player">
+            <End Role="lu_Player" EntitySet="lu_Player" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Players__Game" Association="Self.FK__Game_Players__Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Game_Players" EntitySet="Game_Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Players__lu_Player" Association="Self.FK__Game_Players__lu_Player">
+            <End Role="lu_Player" EntitySet="lu_Player" />
+            <End Role="Game_Players" EntitySet="Game_Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Round_PlayerShots__Game" Association="Self.FK__Game_Round_PlayerShots__Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Game_Round_PlayerShots" EntitySet="Game_Round_PlayerShots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Round_PlayerShots__Game_Rounds" Association="Self.FK__Game_Round_PlayerShots__Game_Rounds">
+            <End Role="Game_Rounds" EntitySet="Game_Rounds" />
+            <End Role="Game_Round_PlayerShots" EntitySet="Game_Round_PlayerShots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Round_PlayerShots__lu_Player" Association="Self.FK__Game_Round_PlayerShots__lu_Player">
+            <End Role="lu_Player" EntitySet="lu_Player" />
+            <End Role="Game_Round_PlayerShots" EntitySet="Game_Round_PlayerShots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Rounds__Game" Association="Self.FK__Game_Rounds__Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Game_Rounds" EntitySet="Game_Rounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Rounds__lu_Round" Association="Self.FK__Game_Rounds__lu_Round">
+            <End Role="lu_Round" EntitySet="lu_Round" />
+            <End Role="Game_Rounds" EntitySet="Game_Rounds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BasketballModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locationId" Type="Int32" Nullable="false" />
+          <Property Name="dateAndTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="winner" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game_Players" Relationship="Self.FK__Game_Players__Game" FromRole="Game" ToRole="Game_Players" />
+          <NavigationProperty Name="Game_Round_PlayerShots" Relationship="Self.FK__Game_Round_PlayerShots__Game" FromRole="Game" ToRole="Game_Round_PlayerShots" />
+          <NavigationProperty Name="Game_Rounds" Relationship="Self.FK__Game_Rounds__Game" FromRole="Game" ToRole="Game_Rounds" />
+          <NavigationProperty Name="lu_Location" Relationship="BasketballModel.FK__Game__lu_Location" FromRole="Game" ToRole="lu_Location" />
+          <NavigationProperty Name="lu_Player" Relationship="BasketballModel.FK__Game__lu_Player" FromRole="Game" ToRole="lu_Player" />
+        </EntityType>
+        <EntityType Name="Game_Players">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gameId" Type="Int32" Nullable="false" />
+          <Property Name="playerId" Type="Int32" Nullable="false" />
+          <Property Name="shootingOrder" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK__Game_Players__Game" FromRole="Game_Players" ToRole="Game" />
+          <NavigationProperty Name="lu_Player" Relationship="Self.FK__Game_Players__lu_Player" FromRole="Game_Players" ToRole="lu_Player" />
+        </EntityType>
+        <EntityType Name="Game_Round_PlayerShots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gameId" Type="Int32" Nullable="false" />
+          <Property Name="gameRoundId" Type="Int32" Nullable="false" />
+          <Property Name="playerId" Type="Int32" Nullable="false" />
+          <Property Name="shotAttempt" Type="Int32" Nullable="false" />
+          <Property Name="shotResult" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK__Game_Round_PlayerShots__Game" FromRole="Game_Round_PlayerShots" ToRole="Game" />
+          <NavigationProperty Name="Game_Rounds" Relationship="Self.FK__Game_Round_PlayerShots__Game_Rounds" FromRole="Game_Round_PlayerShots" ToRole="Game_Rounds" />
+          <NavigationProperty Name="lu_Player" Relationship="Self.FK__Game_Round_PlayerShots__lu_Player" FromRole="Game_Round_PlayerShots" ToRole="lu_Player" />
+        </EntityType>
+        <EntityType Name="Game_Rounds">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gameId" Type="Int32" Nullable="false" />
+          <Property Name="roundId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK__Game_Rounds__Game" FromRole="Game_Rounds" ToRole="Game" />
+          <NavigationProperty Name="Game_Round_PlayerShots" Relationship="Self.FK__Game_Round_PlayerShots__Game_Rounds" FromRole="Game_Rounds" ToRole="Game_Round_PlayerShots" />
+          <NavigationProperty Name="lu_Round" Relationship="Self.FK__Game_Rounds__lu_Round" FromRole="Game_Rounds" ToRole="lu_Round" />
+        </EntityType>
+        <EntityType Name="lu_Location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distance" Type="Int32" Nullable="false" />
+          <Property Name="difficulty" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Games" Relationship="BasketballModel.FK__Game__lu_Location" FromRole="lu_Location" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="lu_Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shootingHand" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Game_Players" Relationship="Self.FK__Game_Players__lu_Player" FromRole="lu_Player" ToRole="Game_Players" />
+          <NavigationProperty Name="Game_Round_PlayerShots" Relationship="Self.FK__Game_Round_PlayerShots__lu_Player" FromRole="lu_Player" ToRole="Game_Round_PlayerShots" />
+          <NavigationProperty Name="Games" Relationship="BasketballModel.FK__Game__lu_Player" FromRole="lu_Player" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="lu_Round">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roundNumber" Type="Int32" Nullable="false" />
+          <Property Name="shotAttempts" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game_Rounds" Relationship="Self.FK__Game_Rounds__lu_Round" FromRole="lu_Round" ToRole="Game_Rounds" />
+        </EntityType>
+        <Association Name="FK__Game_Players__Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Game_Players" Type="Self.Game_Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Players">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Round_PlayerShots__Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Game_Round_PlayerShots" Type="Self.Game_Round_PlayerShots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Round_PlayerShots">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Rounds__Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Game_Rounds" Type="Self.Game_Rounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Rounds">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Players__lu_Player">
+          <End Role="lu_Player" Type="Self.lu_Player" Multiplicity="1" />
+          <End Role="Game_Players" Type="Self.Game_Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Players">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Round_PlayerShots__Game_Rounds">
+          <End Role="Game_Rounds" Type="Self.Game_Rounds" Multiplicity="1" />
+          <End Role="Game_Round_PlayerShots" Type="Self.Game_Round_PlayerShots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game_Rounds">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Round_PlayerShots">
+              <PropertyRef Name="gameRoundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Round_PlayerShots__lu_Player">
+          <End Role="lu_Player" Type="Self.lu_Player" Multiplicity="1" />
+          <End Role="Game_Round_PlayerShots" Type="Self.Game_Round_PlayerShots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Round_PlayerShots">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Rounds__lu_Round">
+          <End Role="lu_Round" Type="Self.lu_Round" Multiplicity="1" />
+          <End Role="Game_Rounds" Type="Self.Game_Rounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Round">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game_Rounds">
+              <PropertyRef Name="roundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BasketballContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="Game_Players" EntityType="Self.Game_Players" />
+          <EntitySet Name="Game_Round_PlayerShots" EntityType="Self.Game_Round_PlayerShots" />
+          <EntitySet Name="Game_Rounds" EntityType="Self.Game_Rounds" />
+          <EntitySet Name="lu_Location" EntityType="Self.lu_Location" />
+          <EntitySet Name="lu_Player" EntityType="Self.lu_Player" />
+          <EntitySet Name="lu_Round" EntityType="Self.lu_Round" />
+          <AssociationSet Name="FK__Game_Players__Game" Association="Self.FK__Game_Players__Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Game_Players" EntitySet="Game_Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Round_PlayerShots__Game" Association="Self.FK__Game_Round_PlayerShots__Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Game_Round_PlayerShots" EntitySet="Game_Round_PlayerShots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Rounds__Game" Association="Self.FK__Game_Rounds__Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Game_Rounds" EntitySet="Game_Rounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Players__lu_Player" Association="Self.FK__Game_Players__lu_Player">
+            <End Role="lu_Player" EntitySet="lu_Player" />
+            <End Role="Game_Players" EntitySet="Game_Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Round_PlayerShots__Game_Rounds" Association="Self.FK__Game_Round_PlayerShots__Game_Rounds">
+            <End Role="Game_Rounds" EntitySet="Game_Rounds" />
+            <End Role="Game_Round_PlayerShots" EntitySet="Game_Round_PlayerShots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Round_PlayerShots__lu_Player" Association="Self.FK__Game_Round_PlayerShots__lu_Player">
+            <End Role="lu_Player" EntitySet="lu_Player" />
+            <End Role="Game_Round_PlayerShots" EntitySet="Game_Round_PlayerShots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Rounds__lu_Round" Association="Self.FK__Game_Rounds__lu_Round">
+            <End Role="lu_Round" EntitySet="lu_Round" />
+            <End Role="Game_Rounds" EntitySet="Game_Rounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game__lu_Location" Association="BasketballModel.FK__Game__lu_Location">
+            <End Role="lu_Location" EntitySet="lu_Location" />
+            <End Role="Game" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game__lu_Player" Association="BasketballModel.FK__Game__lu_Player">
+            <End Role="lu_Player" EntitySet="lu_Player" />
+            <End Role="Game" EntitySet="Games" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK__Game__lu_Location">
+          <End Type="BasketballModel.lu_Location" Role="lu_Location" Multiplicity="1" />
+          <End Type="BasketballModel.Game" Role="Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="locationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game__lu_Player">
+          <End Type="BasketballModel.lu_Player" Role="lu_Player" Multiplicity="1" />
+          <End Type="BasketballModel.Game" Role="Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lu_Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="winner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BasketballModelStoreContainer" CdmEntityContainer="BasketballContext">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="BasketballModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="dateAndTime" ColumnName="dateAndTime" />
+                <ScalarProperty Name="winner" ColumnName="winner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Game_Players">
+            <EntityTypeMapping TypeName="BasketballModel.Game_Players">
+              <MappingFragment StoreEntitySet="Game_Players">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shootingOrder" ColumnName="shootingOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Game_Round_PlayerShots">
+            <EntityTypeMapping TypeName="BasketballModel.Game_Round_PlayerShots">
+              <MappingFragment StoreEntitySet="Game_Round_PlayerShots">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="gameRoundId" ColumnName="gameRoundId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shotAttempt" ColumnName="shotAttempt" />
+                <ScalarProperty Name="shotResult" ColumnName="shotResult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Game_Rounds">
+            <EntityTypeMapping TypeName="BasketballModel.Game_Rounds">
+              <MappingFragment StoreEntitySet="Game_Rounds">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="roundId" ColumnName="roundId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lu_Location">
+            <EntityTypeMapping TypeName="BasketballModel.lu_Location">
+              <MappingFragment StoreEntitySet="lu_Location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lu_Player">
+            <EntityTypeMapping TypeName="BasketballModel.lu_Player">
+              <MappingFragment StoreEntitySet="lu_Player">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerName" ColumnName="playerName" />
+                <ScalarProperty Name="shootingHand" ColumnName="shootingHand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lu_Round">
+            <EntityTypeMapping TypeName="BasketballModel.lu_Round">
+              <MappingFragment StoreEntitySet="lu_Round">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roundNumber" ColumnName="roundNumber" />
+                <ScalarProperty Name="shotAttempts" ColumnName="shotAttempts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
