@@ -1,135 +1,97 @@
 ﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="Basketball._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .btn span.glyphicon {    			
-	        opacity: 0;				
-        }
-        .btn.active span.glyphicon {				
-	        opacity: 1;				
-        }
-    </style>
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+    <link type="text/css" href="css/css_Custom.css" rel="stylesheet"/>
+    
+    <script type="text/javascript" src="Scripts/js_Custom.js"></script>
 
-<%--    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting Started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+    <%--<div id="divGame" class="container">
     </div>--%>
     
+    <div id="wrapper" class="active">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul id="sidebar_menu" class="sidebar-nav">
+                <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+            </ul>
+            <ul class="sidebar-nav" id="sidebar">     
+                <li><a>Play Game<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+                <li><a>Statistics<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+            </ul>
+        </div>
     
-    
-    
-    
-    
-    
-    
-    
-    <div class="row">
-        <div class="col-md-1 text-center"></div>
-        <div class="col-md-1 text-center">1</div>
-        <div class="col-md-1 text-center">2</div>
-        <div class="col-md-1 text-center">3</div>
-        <div class="col-md-1 text-center">4</div>
-        <div class="col-md-1 text-center">5</div>
-        <div class="col-md-1 text-center">6</div>
-        <div class="col-md-1 text-center">7</div>
-        <div class="col-md-1 text-center">8</div>
-        <div class="col-md-1 text-center">9</div>
-        <div class="col-md-1 text-center">10</div>
-        <div class="col-md-1 text-center"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1 text-center"></div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
+        <!-- Page Content -->
+        <div class="container page-content-wrapper" id="divGame">
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+	            <div class="row" style="border-bottom-color: currentColor; border-bottom-width: 1px; border-bottom-style: solid;">
+	                <div class="col-md-12">
+		            <div class="col-md-10">
+			            <h2>Game #1</h2>
+		            </div>
+                    <div class="col-md-1" style="padding-top: 10px;">
+                        <button class="btn btn-primary btn3d" type="button">Add Round</button>
+		            </div>
+                    <div class="col-md-1" style="padding-top: 10px;">
+                        <button class="btn btn-danger btn3d" type="button">End Game</button>
+		            </div>
+	            </div>
+        
+                <div class="row">
+                    <div class="col-md-6" style="height: 150px;">
+	                    <div class="row" style="height: 75px; padding-top: 10px;">
+		                    <h4 style="float: left; padding-top: 10px; width: 80px;">Justin</h4><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">1</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">2</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">3</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">4</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">5</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">6</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">7</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">8</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">9</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">10</span></button>
+	                    </div>
+
+	                    <div class="row" style="height: 75px; padding-top: 10px;">
+		                    <h4 style="float: left; padding-top: 10px; width: 80px;">Kevin</h4><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">1</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">2</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">3</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">4</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">5</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">6</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">7</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">8</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">9</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">10</span></button>
+	                    </div>
+                    </div>
+        
+                    <div class="col-md-3" style="height: 150px;">
+                        <div class="alert alert-success" style="width: 100%; height: 100%;" role="alert">
+                            <div class="text-center" style="padding-top: 18px;"><span style="font-size: 4em; font-weight: bold;">Justin</span></div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3" style="height: 150px;">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <strong>Date & Time</strong>
+                                </td>
+                                <td>
+                                    09/29/2015 5:00 PM
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Location</strong>
+                                </td>
+                                <td>
+                                    Orange
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Round</strong>
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>First Shooter</strong>
+                                </td>
+                                <td>
+                                    Justin
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center" data-toggle="buttons">
-            <label class="btn btn-info">
-				<input type="checkbox" autocomplete="off">
-				<span class="glyphicon glyphicon-ok"></span>
-			</label>
-        </div>
-        <div class="col-md-1 text-center"></div>
     </div>
 </asp:Content>
