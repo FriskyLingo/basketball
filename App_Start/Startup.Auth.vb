@@ -5,7 +5,6 @@ Imports Microsoft.AspNet.Identity.Owin
 Imports Microsoft.Owin
 Imports Microsoft.Owin.Security.Cookies
 Imports Microsoft.Owin.Security.DataProtection
-Imports Microsoft.Owin.Security.Google
 Imports Owin
 
 Partial Public Class Startup
