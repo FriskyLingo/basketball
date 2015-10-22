@@ -175,6 +175,123 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sec_Delete_Game" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Delete_Game_Players" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Delete_Game_Round_PlayerShots" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Delete_Game_Rounds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Delete_lu_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Delete_lu_Player" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Delete_lu_Round" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_Game" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="locationId" Type="int" Mode="In" />
+          <Parameter Name="dateAndTime" Type="smalldatetime" Mode="In" />
+          <Parameter Name="winner" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_Game_Players" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gameId" Type="int" Mode="In" />
+          <Parameter Name="playerId" Type="int" Mode="In" />
+          <Parameter Name="shootingOrder" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_Game_Round_PlayerShots" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gameId" Type="int" Mode="In" />
+          <Parameter Name="gameRoundId" Type="int" Mode="In" />
+          <Parameter Name="playerId" Type="int" Mode="In" />
+          <Parameter Name="shotAttempt" Type="int" Mode="In" />
+          <Parameter Name="shotResult" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_Game_Rounds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gameId" Type="int" Mode="In" />
+          <Parameter Name="roundId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_lu_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="color" Type="varchar" Mode="In" />
+          <Parameter Name="distance" Type="int" Mode="In" />
+          <Parameter Name="difficulty" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_lu_Player" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="playerName" Type="varchar" Mode="In" />
+          <Parameter Name="shootingHand" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sec_Insert_lu_Round" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="roundNumber" Type="int" Mode="In" />
+          <Parameter Name="shotAttempts" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_Game" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_Game_Players" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_Game_Round_PlayerShots" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_Game_Rounds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_lu_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_lu_Player" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Select_lu_Round" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_Game" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="locationId" Type="int" Mode="In" />
+          <Parameter Name="dateAndTime" Type="smalldatetime" Mode="In" />
+          <Parameter Name="winner" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_Game_Players" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="gameId" Type="int" Mode="In" />
+          <Parameter Name="playerId" Type="int" Mode="In" />
+          <Parameter Name="shootingOrder" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_Game_Round_PlayerShots" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="gameId" Type="int" Mode="In" />
+          <Parameter Name="gameRoundId" Type="int" Mode="In" />
+          <Parameter Name="playerId" Type="int" Mode="In" />
+          <Parameter Name="shotAttempt" Type="int" Mode="In" />
+          <Parameter Name="shotResult" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_Game_Rounds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="gameId" Type="int" Mode="In" />
+          <Parameter Name="roundId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_lu_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="color" Type="varchar" Mode="In" />
+          <Parameter Name="distance" Type="int" Mode="In" />
+          <Parameter Name="difficulty" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_lu_Player" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="playerName" Type="varchar" Mode="In" />
+          <Parameter Name="shootingHand" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sec_Update_lu_Round" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="roundNumber" Type="int" Mode="In" />
+          <Parameter Name="shotAttempts" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="BasketballModelStoreContainer">
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Game_Players" EntityType="Self.Game_Players" Schema="dbo" store:Type="Tables" />
@@ -432,6 +549,123 @@
             <End Role="lu_Player" EntitySet="lu_Player" />
             <End Role="Game" EntitySet="Games" />
           </AssociationSet>
+          <FunctionImport Name="sec_Delete_Game">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Delete_Game_Players">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Delete_Game_Round_PlayerShots">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Delete_Game_Rounds">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Delete_lu_Location">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Delete_lu_Player">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Delete_lu_Round">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_Game" ReturnType="Collection(BasketballModel.sec_Insert_Game_Result)">
+            <Parameter Name="locationId" Mode="In" Type="Int32" />
+            <Parameter Name="dateAndTime" Mode="In" Type="DateTime" />
+            <Parameter Name="winner" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_Game_Players" ReturnType="Collection(BasketballModel.sec_Insert_Game_Players_Result)">
+            <Parameter Name="gameId" Mode="In" Type="Int32" />
+            <Parameter Name="playerId" Mode="In" Type="Int32" />
+            <Parameter Name="shootingOrder" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_Game_Round_PlayerShots" ReturnType="Collection(BasketballModel.sec_Insert_Game_Round_PlayerShots_Result)">
+            <Parameter Name="gameId" Mode="In" Type="Int32" />
+            <Parameter Name="gameRoundId" Mode="In" Type="Int32" />
+            <Parameter Name="playerId" Mode="In" Type="Int32" />
+            <Parameter Name="shotAttempt" Mode="In" Type="Int32" />
+            <Parameter Name="shotResult" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_Game_Rounds" ReturnType="Collection(BasketballModel.sec_Insert_Game_Rounds_Result)">
+            <Parameter Name="gameId" Mode="In" Type="Int32" />
+            <Parameter Name="roundId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_lu_Location" ReturnType="Collection(BasketballModel.sec_Insert_lu_Location_Result)">
+            <Parameter Name="color" Mode="In" Type="String" />
+            <Parameter Name="distance" Mode="In" Type="Int32" />
+            <Parameter Name="difficulty" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_lu_Player" ReturnType="Collection(BasketballModel.sec_Insert_lu_Player_Result)">
+            <Parameter Name="playerName" Mode="In" Type="String" />
+            <Parameter Name="shootingHand" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Insert_lu_Round" ReturnType="Collection(BasketballModel.sec_Insert_lu_Round_Result)">
+            <Parameter Name="roundNumber" Mode="In" Type="Int32" />
+            <Parameter Name="shotAttempts" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_Game" ReturnType="Collection(BasketballModel.sec_Select_Game_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_Game_Players" ReturnType="Collection(BasketballModel.sec_Select_Game_Players_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_Game_Round_PlayerShots" ReturnType="Collection(BasketballModel.sec_Select_Game_Round_PlayerShots_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_Game_Rounds" ReturnType="Collection(BasketballModel.sec_Select_Game_Rounds_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_lu_Location" ReturnType="Collection(BasketballModel.sec_Select_lu_Location_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_lu_Player" ReturnType="Collection(BasketballModel.sec_Select_lu_Player_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Select_lu_Round" ReturnType="Collection(BasketballModel.sec_Select_lu_Round_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_Game" ReturnType="Collection(BasketballModel.sec_Update_Game_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="locationId" Mode="In" Type="Int32" />
+            <Parameter Name="dateAndTime" Mode="In" Type="DateTime" />
+            <Parameter Name="winner" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_Game_Players" ReturnType="Collection(BasketballModel.sec_Update_Game_Players_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="gameId" Mode="In" Type="Int32" />
+            <Parameter Name="playerId" Mode="In" Type="Int32" />
+            <Parameter Name="shootingOrder" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_Game_Round_PlayerShots" ReturnType="Collection(BasketballModel.sec_Update_Game_Round_PlayerShots_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="gameId" Mode="In" Type="Int32" />
+            <Parameter Name="gameRoundId" Mode="In" Type="Int32" />
+            <Parameter Name="playerId" Mode="In" Type="Int32" />
+            <Parameter Name="shotAttempt" Mode="In" Type="Int32" />
+            <Parameter Name="shotResult" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_Game_Rounds" ReturnType="Collection(BasketballModel.sec_Update_Game_Rounds_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="gameId" Mode="In" Type="Int32" />
+            <Parameter Name="roundId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_lu_Location" ReturnType="Collection(BasketballModel.sec_Update_lu_Location_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="color" Mode="In" Type="String" />
+            <Parameter Name="distance" Mode="In" Type="Int32" />
+            <Parameter Name="difficulty" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_lu_Player" ReturnType="Collection(BasketballModel.sec_Update_lu_Player_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="playerName" Mode="In" Type="String" />
+            <Parameter Name="shootingHand" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sec_Update_lu_Round" ReturnType="Collection(BasketballModel.sec_Update_lu_Round_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="roundNumber" Mode="In" Type="Int32" />
+            <Parameter Name="shotAttempts" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <Association Name="FK__Game__lu_Location">
           <End Type="BasketballModel.lu_Location" Role="lu_Location" Multiplicity="1" />
@@ -457,6 +691,129 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sec_Insert_Game_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="locationId" Nullable="false" />
+          <Property Type="DateTime" Name="dateAndTime" Nullable="false" Precision="16" />
+          <Property Type="Int32" Name="winner" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Insert_Game_Players_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="playerId" Nullable="false" />
+          <Property Type="Byte" Name="shootingOrder" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Insert_Game_Round_PlayerShots_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="gameRoundId" Nullable="false" />
+          <Property Type="Int32" Name="playerId" Nullable="false" />
+          <Property Type="Int32" Name="shotAttempt" Nullable="false" />
+          <Property Type="Byte" Name="shotResult" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Insert_Game_Rounds_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="roundId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Insert_lu_Location_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="distance" Nullable="false" />
+          <Property Type="String" Name="difficulty" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sec_Insert_lu_Player_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="playerName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="shootingHand" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="sec_Insert_lu_Round_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="roundNumber" Nullable="false" />
+          <Property Type="Int32" Name="shotAttempts" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_Game_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="locationId" Nullable="false" />
+          <Property Type="DateTime" Name="dateAndTime" Nullable="false" Precision="16" />
+          <Property Type="Int32" Name="winner" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_Game_Players_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="playerId" Nullable="false" />
+          <Property Type="Byte" Name="shootingOrder" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_Game_Round_PlayerShots_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="gameRoundId" Nullable="false" />
+          <Property Type="Int32" Name="playerId" Nullable="false" />
+          <Property Type="Int32" Name="shotAttempt" Nullable="false" />
+          <Property Type="Byte" Name="shotResult" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_Game_Rounds_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="roundId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_lu_Location_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="distance" Nullable="false" />
+          <Property Type="String" Name="difficulty" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_lu_Player_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="playerName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="shootingHand" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="sec_Select_lu_Round_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="roundNumber" Nullable="false" />
+          <Property Type="Int32" Name="shotAttempts" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_Game_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="locationId" Nullable="false" />
+          <Property Type="DateTime" Name="dateAndTime" Nullable="false" Precision="16" />
+          <Property Type="Int32" Name="winner" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_Game_Players_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="playerId" Nullable="false" />
+          <Property Type="Byte" Name="shootingOrder" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_Game_Round_PlayerShots_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="gameRoundId" Nullable="false" />
+          <Property Type="Int32" Name="playerId" Nullable="false" />
+          <Property Type="Int32" Name="shotAttempt" Nullable="false" />
+          <Property Type="Byte" Name="shotResult" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_Game_Rounds_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="roundId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_lu_Location_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="distance" Nullable="false" />
+          <Property Type="String" Name="difficulty" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_lu_Player_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="playerName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="shootingHand" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="sec_Update_lu_Round_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="roundNumber" Nullable="false" />
+          <Property Type="Int32" Name="shotAttempts" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -532,6 +889,220 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sec_Delete_Game" FunctionName="BasketballModel.Store.sec_Delete_Game" />
+          <FunctionImportMapping FunctionImportName="sec_Delete_Game_Players" FunctionName="BasketballModel.Store.sec_Delete_Game_Players" />
+          <FunctionImportMapping FunctionImportName="sec_Delete_Game_Round_PlayerShots" FunctionName="BasketballModel.Store.sec_Delete_Game_Round_PlayerShots" />
+          <FunctionImportMapping FunctionImportName="sec_Delete_Game_Rounds" FunctionName="BasketballModel.Store.sec_Delete_Game_Rounds" />
+          <FunctionImportMapping FunctionImportName="sec_Delete_lu_Location" FunctionName="BasketballModel.Store.sec_Delete_lu_Location" />
+          <FunctionImportMapping FunctionImportName="sec_Delete_lu_Player" FunctionName="BasketballModel.Store.sec_Delete_lu_Player" />
+          <FunctionImportMapping FunctionImportName="sec_Delete_lu_Round" FunctionName="BasketballModel.Store.sec_Delete_lu_Round" />
+          <FunctionImportMapping FunctionImportName="sec_Insert_Game" FunctionName="BasketballModel.Store.sec_Insert_Game">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_Game_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="dateAndTime" ColumnName="dateAndTime" />
+                <ScalarProperty Name="winner" ColumnName="winner" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Insert_Game_Players" FunctionName="BasketballModel.Store.sec_Insert_Game_Players">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_Game_Players_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shootingOrder" ColumnName="shootingOrder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Insert_Game_Round_PlayerShots" FunctionName="BasketballModel.Store.sec_Insert_Game_Round_PlayerShots">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_Game_Round_PlayerShots_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="gameRoundId" ColumnName="gameRoundId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shotAttempt" ColumnName="shotAttempt" />
+                <ScalarProperty Name="shotResult" ColumnName="shotResult" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Insert_Game_Rounds" FunctionName="BasketballModel.Store.sec_Insert_Game_Rounds">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_Game_Rounds_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="roundId" ColumnName="roundId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Insert_lu_Location" FunctionName="BasketballModel.Store.sec_Insert_lu_Location">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_lu_Location_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Insert_lu_Player" FunctionName="BasketballModel.Store.sec_Insert_lu_Player">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_lu_Player_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerName" ColumnName="playerName" />
+                <ScalarProperty Name="shootingHand" ColumnName="shootingHand" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Insert_lu_Round" FunctionName="BasketballModel.Store.sec_Insert_lu_Round">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Insert_lu_Round_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roundNumber" ColumnName="roundNumber" />
+                <ScalarProperty Name="shotAttempts" ColumnName="shotAttempts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_Game" FunctionName="BasketballModel.Store.sec_Select_Game">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_Game_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="dateAndTime" ColumnName="dateAndTime" />
+                <ScalarProperty Name="winner" ColumnName="winner" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_Game_Players" FunctionName="BasketballModel.Store.sec_Select_Game_Players">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_Game_Players_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shootingOrder" ColumnName="shootingOrder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_Game_Round_PlayerShots" FunctionName="BasketballModel.Store.sec_Select_Game_Round_PlayerShots">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_Game_Round_PlayerShots_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="gameRoundId" ColumnName="gameRoundId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shotAttempt" ColumnName="shotAttempt" />
+                <ScalarProperty Name="shotResult" ColumnName="shotResult" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_Game_Rounds" FunctionName="BasketballModel.Store.sec_Select_Game_Rounds">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_Game_Rounds_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="roundId" ColumnName="roundId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_lu_Location" FunctionName="BasketballModel.Store.sec_Select_lu_Location">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_lu_Location_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_lu_Player" FunctionName="BasketballModel.Store.sec_Select_lu_Player">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_lu_Player_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerName" ColumnName="playerName" />
+                <ScalarProperty Name="shootingHand" ColumnName="shootingHand" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Select_lu_Round" FunctionName="BasketballModel.Store.sec_Select_lu_Round">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Select_lu_Round_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roundNumber" ColumnName="roundNumber" />
+                <ScalarProperty Name="shotAttempts" ColumnName="shotAttempts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_Game" FunctionName="BasketballModel.Store.sec_Update_Game">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_Game_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="dateAndTime" ColumnName="dateAndTime" />
+                <ScalarProperty Name="winner" ColumnName="winner" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_Game_Players" FunctionName="BasketballModel.Store.sec_Update_Game_Players">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_Game_Players_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shootingOrder" ColumnName="shootingOrder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_Game_Round_PlayerShots" FunctionName="BasketballModel.Store.sec_Update_Game_Round_PlayerShots">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_Game_Round_PlayerShots_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="gameRoundId" ColumnName="gameRoundId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="shotAttempt" ColumnName="shotAttempt" />
+                <ScalarProperty Name="shotResult" ColumnName="shotResult" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_Game_Rounds" FunctionName="BasketballModel.Store.sec_Update_Game_Rounds">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_Game_Rounds_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="roundId" ColumnName="roundId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_lu_Location" FunctionName="BasketballModel.Store.sec_Update_lu_Location">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_lu_Location_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_lu_Player" FunctionName="BasketballModel.Store.sec_Update_lu_Player">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_lu_Player_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerName" ColumnName="playerName" />
+                <ScalarProperty Name="shootingHand" ColumnName="shootingHand" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sec_Update_lu_Round" FunctionName="BasketballModel.Store.sec_Update_lu_Round">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BasketballModel.sec_Update_lu_Round_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roundNumber" ColumnName="roundNumber" />
+                <ScalarProperty Name="shotAttempts" ColumnName="shotAttempts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

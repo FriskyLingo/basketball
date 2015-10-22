@@ -10,6 +10,8 @@
 Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
+Imports System.Data.Entity.Core.Objects
+Imports System.Linq
 
 Partial Public Class BasketballContext
     Inherits DbContext
@@ -29,5 +31,239 @@ Partial Public Class BasketballContext
     Public Overridable Property lu_Location() As DbSet(Of lu_Location)
     Public Overridable Property lu_Player() As DbSet(Of lu_Player)
     Public Overridable Property lu_Round() As DbSet(Of lu_Round)
+
+    Public Overridable Function sec_Delete_Game(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_Game", idParameter)
+    End Function
+
+    Public Overridable Function sec_Delete_Game_Players(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_Game_Players", idParameter)
+    End Function
+
+    Public Overridable Function sec_Delete_Game_Round_PlayerShots(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_Game_Round_PlayerShots", idParameter)
+    End Function
+
+    Public Overridable Function sec_Delete_Game_Rounds(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_Game_Rounds", idParameter)
+    End Function
+
+    Public Overridable Function sec_Delete_lu_Location(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_lu_Location", idParameter)
+    End Function
+
+    Public Overridable Function sec_Delete_lu_Player(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_lu_Player", idParameter)
+    End Function
+
+    Public Overridable Function sec_Delete_lu_Round(id As Nullable(Of Integer)) As Integer
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sec_Delete_lu_Round", idParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_Game(locationId As Nullable(Of Integer), dateAndTime As Nullable(Of Date), winner As Nullable(Of Integer)) As ObjectResult(Of sec_Insert_Game_Result)
+        Dim locationIdParameter As ObjectParameter = If(locationId.HasValue, New ObjectParameter("locationId", locationId), New ObjectParameter("locationId", GetType(Integer)))
+
+        Dim dateAndTimeParameter As ObjectParameter = If(dateAndTime.HasValue, New ObjectParameter("dateAndTime", dateAndTime), New ObjectParameter("dateAndTime", GetType(Date)))
+
+        Dim winnerParameter As ObjectParameter = If(winner.HasValue, New ObjectParameter("winner", winner), New ObjectParameter("winner", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_Game_Result)("sec_Insert_Game", locationIdParameter, dateAndTimeParameter, winnerParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_Game_Players(gameId As Nullable(Of Integer), playerId As Nullable(Of Integer), shootingOrder As Nullable(Of Byte)) As ObjectResult(Of sec_Insert_Game_Players_Result)
+        Dim gameIdParameter As ObjectParameter = If(gameId.HasValue, New ObjectParameter("gameId", gameId), New ObjectParameter("gameId", GetType(Integer)))
+
+        Dim playerIdParameter As ObjectParameter = If(playerId.HasValue, New ObjectParameter("playerId", playerId), New ObjectParameter("playerId", GetType(Integer)))
+
+        Dim shootingOrderParameter As ObjectParameter = If(shootingOrder.HasValue, New ObjectParameter("shootingOrder", shootingOrder), New ObjectParameter("shootingOrder", GetType(Byte)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_Game_Players_Result)("sec_Insert_Game_Players", gameIdParameter, playerIdParameter, shootingOrderParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_Game_Round_PlayerShots(gameId As Nullable(Of Integer), gameRoundId As Nullable(Of Integer), playerId As Nullable(Of Integer), shotAttempt As Nullable(Of Integer), shotResult As Nullable(Of Byte)) As ObjectResult(Of sec_Insert_Game_Round_PlayerShots_Result)
+        Dim gameIdParameter As ObjectParameter = If(gameId.HasValue, New ObjectParameter("gameId", gameId), New ObjectParameter("gameId", GetType(Integer)))
+
+        Dim gameRoundIdParameter As ObjectParameter = If(gameRoundId.HasValue, New ObjectParameter("gameRoundId", gameRoundId), New ObjectParameter("gameRoundId", GetType(Integer)))
+
+        Dim playerIdParameter As ObjectParameter = If(playerId.HasValue, New ObjectParameter("playerId", playerId), New ObjectParameter("playerId", GetType(Integer)))
+
+        Dim shotAttemptParameter As ObjectParameter = If(shotAttempt.HasValue, New ObjectParameter("shotAttempt", shotAttempt), New ObjectParameter("shotAttempt", GetType(Integer)))
+
+        Dim shotResultParameter As ObjectParameter = If(shotResult.HasValue, New ObjectParameter("shotResult", shotResult), New ObjectParameter("shotResult", GetType(Byte)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_Game_Round_PlayerShots_Result)("sec_Insert_Game_Round_PlayerShots", gameIdParameter, gameRoundIdParameter, playerIdParameter, shotAttemptParameter, shotResultParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_Game_Rounds(gameId As Nullable(Of Integer), roundId As Nullable(Of Integer)) As ObjectResult(Of sec_Insert_Game_Rounds_Result)
+        Dim gameIdParameter As ObjectParameter = If(gameId.HasValue, New ObjectParameter("gameId", gameId), New ObjectParameter("gameId", GetType(Integer)))
+
+        Dim roundIdParameter As ObjectParameter = If(roundId.HasValue, New ObjectParameter("roundId", roundId), New ObjectParameter("roundId", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_Game_Rounds_Result)("sec_Insert_Game_Rounds", gameIdParameter, roundIdParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_lu_Location(color As String, distance As Nullable(Of Integer), difficulty As String) As ObjectResult(Of sec_Insert_lu_Location_Result)
+        Dim colorParameter As ObjectParameter = If(color IsNot Nothing, New ObjectParameter("color", color), New ObjectParameter("color", GetType(String)))
+
+        Dim distanceParameter As ObjectParameter = If(distance.HasValue, New ObjectParameter("distance", distance), New ObjectParameter("distance", GetType(Integer)))
+
+        Dim difficultyParameter As ObjectParameter = If(difficulty IsNot Nothing, New ObjectParameter("difficulty", difficulty), New ObjectParameter("difficulty", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_lu_Location_Result)("sec_Insert_lu_Location", colorParameter, distanceParameter, difficultyParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_lu_Player(playerName As String, shootingHand As String) As ObjectResult(Of sec_Insert_lu_Player_Result)
+        Dim playerNameParameter As ObjectParameter = If(playerName IsNot Nothing, New ObjectParameter("playerName", playerName), New ObjectParameter("playerName", GetType(String)))
+
+        Dim shootingHandParameter As ObjectParameter = If(shootingHand IsNot Nothing, New ObjectParameter("shootingHand", shootingHand), New ObjectParameter("shootingHand", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_lu_Player_Result)("sec_Insert_lu_Player", playerNameParameter, shootingHandParameter)
+    End Function
+
+    Public Overridable Function sec_Insert_lu_Round(roundNumber As Nullable(Of Integer), shotAttempts As Nullable(Of Integer)) As ObjectResult(Of sec_Insert_lu_Round_Result)
+        Dim roundNumberParameter As ObjectParameter = If(roundNumber.HasValue, New ObjectParameter("roundNumber", roundNumber), New ObjectParameter("roundNumber", GetType(Integer)))
+
+        Dim shotAttemptsParameter As ObjectParameter = If(shotAttempts.HasValue, New ObjectParameter("shotAttempts", shotAttempts), New ObjectParameter("shotAttempts", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Insert_lu_Round_Result)("sec_Insert_lu_Round", roundNumberParameter, shotAttemptsParameter)
+    End Function
+
+    Public Overridable Function sec_Select_Game(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_Game_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_Game_Result)("sec_Select_Game", idParameter)
+    End Function
+
+    Public Overridable Function sec_Select_Game_Players(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_Game_Players_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_Game_Players_Result)("sec_Select_Game_Players", idParameter)
+    End Function
+
+    Public Overridable Function sec_Select_Game_Round_PlayerShots(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_Game_Round_PlayerShots_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_Game_Round_PlayerShots_Result)("sec_Select_Game_Round_PlayerShots", idParameter)
+    End Function
+
+    Public Overridable Function sec_Select_Game_Rounds(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_Game_Rounds_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_Game_Rounds_Result)("sec_Select_Game_Rounds", idParameter)
+    End Function
+
+    Public Overridable Function sec_Select_lu_Location(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_lu_Location_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_lu_Location_Result)("sec_Select_lu_Location", idParameter)
+    End Function
+
+    Public Overridable Function sec_Select_lu_Player(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_lu_Player_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_lu_Player_Result)("sec_Select_lu_Player", idParameter)
+    End Function
+
+    Public Overridable Function sec_Select_lu_Round(id As Nullable(Of Integer)) As ObjectResult(Of sec_Select_lu_Round_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Select_lu_Round_Result)("sec_Select_lu_Round", idParameter)
+    End Function
+
+    Public Overridable Function sec_Update_Game(id As Nullable(Of Integer), locationId As Nullable(Of Integer), dateAndTime As Nullable(Of Date), winner As Nullable(Of Integer)) As ObjectResult(Of sec_Update_Game_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim locationIdParameter As ObjectParameter = If(locationId.HasValue, New ObjectParameter("locationId", locationId), New ObjectParameter("locationId", GetType(Integer)))
+
+        Dim dateAndTimeParameter As ObjectParameter = If(dateAndTime.HasValue, New ObjectParameter("dateAndTime", dateAndTime), New ObjectParameter("dateAndTime", GetType(Date)))
+
+        Dim winnerParameter As ObjectParameter = If(winner.HasValue, New ObjectParameter("winner", winner), New ObjectParameter("winner", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_Game_Result)("sec_Update_Game", idParameter, locationIdParameter, dateAndTimeParameter, winnerParameter)
+    End Function
+
+    Public Overridable Function sec_Update_Game_Players(id As Nullable(Of Integer), gameId As Nullable(Of Integer), playerId As Nullable(Of Integer), shootingOrder As Nullable(Of Byte)) As ObjectResult(Of sec_Update_Game_Players_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim gameIdParameter As ObjectParameter = If(gameId.HasValue, New ObjectParameter("gameId", gameId), New ObjectParameter("gameId", GetType(Integer)))
+
+        Dim playerIdParameter As ObjectParameter = If(playerId.HasValue, New ObjectParameter("playerId", playerId), New ObjectParameter("playerId", GetType(Integer)))
+
+        Dim shootingOrderParameter As ObjectParameter = If(shootingOrder.HasValue, New ObjectParameter("shootingOrder", shootingOrder), New ObjectParameter("shootingOrder", GetType(Byte)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_Game_Players_Result)("sec_Update_Game_Players", idParameter, gameIdParameter, playerIdParameter, shootingOrderParameter)
+    End Function
+
+    Public Overridable Function sec_Update_Game_Round_PlayerShots(id As Nullable(Of Integer), gameId As Nullable(Of Integer), gameRoundId As Nullable(Of Integer), playerId As Nullable(Of Integer), shotAttempt As Nullable(Of Integer), shotResult As Nullable(Of Byte)) As ObjectResult(Of sec_Update_Game_Round_PlayerShots_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim gameIdParameter As ObjectParameter = If(gameId.HasValue, New ObjectParameter("gameId", gameId), New ObjectParameter("gameId", GetType(Integer)))
+
+        Dim gameRoundIdParameter As ObjectParameter = If(gameRoundId.HasValue, New ObjectParameter("gameRoundId", gameRoundId), New ObjectParameter("gameRoundId", GetType(Integer)))
+
+        Dim playerIdParameter As ObjectParameter = If(playerId.HasValue, New ObjectParameter("playerId", playerId), New ObjectParameter("playerId", GetType(Integer)))
+
+        Dim shotAttemptParameter As ObjectParameter = If(shotAttempt.HasValue, New ObjectParameter("shotAttempt", shotAttempt), New ObjectParameter("shotAttempt", GetType(Integer)))
+
+        Dim shotResultParameter As ObjectParameter = If(shotResult.HasValue, New ObjectParameter("shotResult", shotResult), New ObjectParameter("shotResult", GetType(Byte)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_Game_Round_PlayerShots_Result)("sec_Update_Game_Round_PlayerShots", idParameter, gameIdParameter, gameRoundIdParameter, playerIdParameter, shotAttemptParameter, shotResultParameter)
+    End Function
+
+    Public Overridable Function sec_Update_Game_Rounds(id As Nullable(Of Integer), gameId As Nullable(Of Integer), roundId As Nullable(Of Integer)) As ObjectResult(Of sec_Update_Game_Rounds_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim gameIdParameter As ObjectParameter = If(gameId.HasValue, New ObjectParameter("gameId", gameId), New ObjectParameter("gameId", GetType(Integer)))
+
+        Dim roundIdParameter As ObjectParameter = If(roundId.HasValue, New ObjectParameter("roundId", roundId), New ObjectParameter("roundId", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_Game_Rounds_Result)("sec_Update_Game_Rounds", idParameter, gameIdParameter, roundIdParameter)
+    End Function
+
+    Public Overridable Function sec_Update_lu_Location(id As Nullable(Of Integer), color As String, distance As Nullable(Of Integer), difficulty As String) As ObjectResult(Of sec_Update_lu_Location_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim colorParameter As ObjectParameter = If(color IsNot Nothing, New ObjectParameter("color", color), New ObjectParameter("color", GetType(String)))
+
+        Dim distanceParameter As ObjectParameter = If(distance.HasValue, New ObjectParameter("distance", distance), New ObjectParameter("distance", GetType(Integer)))
+
+        Dim difficultyParameter As ObjectParameter = If(difficulty IsNot Nothing, New ObjectParameter("difficulty", difficulty), New ObjectParameter("difficulty", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_lu_Location_Result)("sec_Update_lu_Location", idParameter, colorParameter, distanceParameter, difficultyParameter)
+    End Function
+
+    Public Overridable Function sec_Update_lu_Player(id As Nullable(Of Integer), playerName As String, shootingHand As String) As ObjectResult(Of sec_Update_lu_Player_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim playerNameParameter As ObjectParameter = If(playerName IsNot Nothing, New ObjectParameter("playerName", playerName), New ObjectParameter("playerName", GetType(String)))
+
+        Dim shootingHandParameter As ObjectParameter = If(shootingHand IsNot Nothing, New ObjectParameter("shootingHand", shootingHand), New ObjectParameter("shootingHand", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_lu_Player_Result)("sec_Update_lu_Player", idParameter, playerNameParameter, shootingHandParameter)
+    End Function
+
+    Public Overridable Function sec_Update_lu_Round(id As Nullable(Of Integer), roundNumber As Nullable(Of Integer), shotAttempts As Nullable(Of Integer)) As ObjectResult(Of sec_Update_lu_Round_Result)
+        Dim idParameter As ObjectParameter = If(id.HasValue, New ObjectParameter("id", id), New ObjectParameter("id", GetType(Integer)))
+
+        Dim roundNumberParameter As ObjectParameter = If(roundNumber.HasValue, New ObjectParameter("roundNumber", roundNumber), New ObjectParameter("roundNumber", GetType(Integer)))
+
+        Dim shotAttemptsParameter As ObjectParameter = If(shotAttempts.HasValue, New ObjectParameter("shotAttempts", shotAttempts), New ObjectParameter("shotAttempts", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sec_Update_lu_Round_Result)("sec_Update_lu_Round", idParameter, roundNumberParameter, shotAttemptsParameter)
+    End Function
 
 End Class

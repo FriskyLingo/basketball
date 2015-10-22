@@ -435,6 +435,69 @@
       <DependentUpon>BasketballModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.vb" />
+    <Compile Include="Models\sec_Insert_Game_Players_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Insert_Game_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Insert_Game_Rounds_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Insert_Game_Round_PlayerShots_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Insert_lu_Location_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Insert_lu_Player_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Insert_lu_Round_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_Game_Players_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_Game_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_Game_Rounds_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_Game_Round_PlayerShots_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_lu_Location_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_lu_Player_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Select_lu_Round_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_Game_Players_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_Game_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_Game_Rounds_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_Game_Round_PlayerShots_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_lu_Location_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_lu_Player_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sec_Update_lu_Round_Result.vb">
+      <DependentUpon>BasketballModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
