@@ -490,3 +490,65 @@ fieldset[disabled] .btn-lightblue.active {
   color: #75caeb;
   background-color: #ffffff;
 }
+
+
+.bg-pink {
+    background-color: #F9B3B1;
+}
+.bg-red {
+    background-color: #FF7373;
+}
+.bg-green {
+    background-color: #95D195;
+}
+.bg-orange {
+    background-color: #F9B67E;
+}
+.bg-yellow {
+    background-color: #E6E696;
+}
+
+
+
+
+.player-row {
+    height: 75px;
+    padding-top: 10px;
+}
+
+.player-name {
+    float: left;
+    padding-top: 10px;
+    width: 80px;
+}
+
+.action-start, .action-finish, .action-done {
+    margin-left: 25px;
+}
+
+.players {
+    height: 150px;
+}
+
+#divGameHeader .cancel-button {
+    top: 3px;
+}
+
+.game-winner {
+    height: 150px;
+    display: none;
+}
+
+.game-winner div.alert {
+    width: 100%;
+    height: 100%;
+}
+
+.div-winner-span {
+    padding-top: 18px;
+}
+
+.winner-span {
+    font-size: 4em;
+    font-weight: bold;
+}
