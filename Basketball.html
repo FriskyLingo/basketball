@@ -8,6 +8,7 @@
             CSS/STYLES
         --------------------------------------------------------------------------------------->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <!--<link href="css/buttons.css" rel="stylesheet" />-->
         <link href="Content/font-awesome.min.css" rel="stylesheet" />
         <link type="text/css" href="css/css_Custom.css" rel="stylesheet"/>
     <style type="text/css">
@@ -560,8 +561,9 @@
         <script src="Scripts/modernizr-2.8.3.js"></script>
         <script src="Scripts/jquery-2.1.4.min.js"></script>
         <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/respond.min.js"></script>
-        <script src="Scripts/Sortable.min.js"></script>
+        <script src="Scripts/respond.min.js"></script>
+    <script src="Scripts/Sortable.min.js"></script>
+        <script src="Scripts/moment.min.js"></script>
     </head>
     <body>
         <!-- Wrapper -->
@@ -577,13 +579,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">Play Game</a>
+                        <a href="#" id="aPlayGame">Play Game</a>
                     </li>
                     <li>
-                        <a href="#">Previous Games</a>
+                        <a href="#" id="aPreviousGames">Previous Games</a>
                     </li>
                     <li>
-                        <a href="#">Statistics</a>
+                        <a href="#" id="aStatistics">Statistics</a>
                     </li>
                 </ul>
             </nav>
@@ -597,6 +599,12 @@
                     <span class="hamb-bottom"></span>
                 </button>
 
+
+                <!--
+                ######################################################################################
+                Create New Game
+                ######################################################################################
+                -->
                 <div class="container" id="divContainerCreateGame">
                     <div class="row">
                         <!-- Select Players -->
@@ -605,11 +613,11 @@
                             </h3>
                             <div class="funkyradio" id="divPlayers">
                                 <div class="funkyradio-lightblue">
-                                    <input type="checkbox" name="checkbox" id="checkbox1"/>
+                                    <input type="checkbox" name="checkbox" id="checkbox1" data-player="Justin"/>
                                     <label for="checkbox1">Justin</label>
                                 </div>
                                 <div class="funkyradio-lightblue">
-                                    <input type="checkbox" name="checkbox" id="checkbox2"/>
+                                    <input type="checkbox" name="checkbox" id="checkbox2" data-player="Kevin"/>
                                     <label for="checkbox2">Kevin</label>
                                 </div>
                             </div>
@@ -618,25 +626,25 @@
                         <!-- Select Location -->
                         <div class="col-md-6">
                             <h3>Choose Location</h3>
-                            <div class="funkyradio">
+                            <div class="funkyradio" id="divLocations">
                                 <div class="funkyradio-pink">
-                                    <input type="radio" name="radio" id="radio2"/>
+                                    <input type="radio" name="radio" id="radio2" data-color="pink"/>
                                     <label for="radio2">Pink</label>
                                 </div>
                                 <div class="funkyradio-red">
-                                    <input type="radio" name="radio" id="radio3"/>
+                                    <input type="radio" name="radio" id="radio3" data-color="red"/>
                                     <label for="radio3">Red</label>
                                 </div>
                                 <div class="funkyradio-green">
-                                    <input type="radio" name="radio" id="radio4"/>
+                                    <input type="radio" name="radio" id="radio4" data-color="green"/>
                                     <label for="radio4">Green</label>
                                 </div>
                                 <div class="funkyradio-orange">
-                                    <input type="radio" name="radio" id="radio5"/>
+                                    <input type="radio" name="radio" id="radio5" data-color="orange"/>
                                     <label for="radio5">Orange</label>
                                 </div>
                                 <div class="funkyradio-yellow">
-                                    <input type="radio" name="radio" id="radio6"/>
+                                    <input type="radio" name="radio" id="radio6" data-color="yellow"/>
                                     <label for="radio6">Yellow</label>
                                 </div>
                             </div>
@@ -645,60 +653,90 @@
 
                     <div class="row">
                         <div class="col-md-offset-3 col-md-6" style="padding-top: 20px;">
-                            <button class="btn btn-success btn3d btn-block btn-lg" type="button">Start Game!</button>
+                            <button id="btnStartGame" class="btn btn-success btn3d btn-block btn-lg" type="button">Start Game!</button>
+                            <!--<a href="#" class="button button-3d button-action button-rounded button-giant button-block">Start Game!</a>-->
                         </div>
                     </div>
                 </div>
 
+
+                <!--
+                ######################################################################################
+                Current Game
+                ######################################################################################
+                -->
                 <div class="container" id="divContainerGame">
 
-                        <!-- Game Header -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2>Game #1</h2>
-                                <hr/>
+                    <!-- Game Header -->
+                    <div id="divGameHeader" class="row">
+                        <div class="col-md-11">
+                            <h2>Game #<span id="gameNumber">1</span> (Round <span id="roundNumber">1</span>) <small id="gameTime">10/06/2015 4:05 PM</small>
+                            </h2>
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-danger btn3d pull-right" style="top: 3px;" type="button">CANCEL</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr/>
+                        </div>
+                    </div>
+                    <!-- /Game Header -->
+
+                    <!-- Game -->
+                    <div id="divGame" class="row">
+                        <!-- Players & Shot Counters -->
+                        <div class="col-md-9 players">
+                            <!-- Player #1 -->
+                            <div class="row player-row">
+                                <h4 class="player-name">Justin</h4>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">1</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">2</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">3</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">4</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">5</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">6</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">7</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">8</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">9</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">10</span></button>
+                                <button class="btn btn-primary btn3d button-action action-start" type="button">Start</button>
+                            </div>
+                            <!-- /Player #1 -->
+
+                            <!-- Player #2 -->
+                            <div class="row player-row">
+                                <h4 class="player-name">Kevin</h4>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">1</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">2</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">3</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">4</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">5</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">6</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">7</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">8</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">9</span></button>
+                                    <button class="btn btn-default btn-lg btn3d button-shot" type="button"><span class="glyphicon">10</span></button>
+                                <button class="btn btn-primary btn3d button-action action-start" type="button">Start</button>
+                            </div>
+                            <!-- /Player #2 -->
+                        </div>
+                        <!-- /Players & Shot Counters -->
+
+                        <!-- Winner -->
+                        <div id="divWinner" class="col-md-3" style="height: 150px;">
+                            <div class="alert alert-success" style="width: 100%; height: 100%;" role="alert">
+                                <div style="padding-top: 18px;"><span id="theWinner" style="font-size: 4em; font-weight: bold;">WINNER</span></div>
                             </div>
                         </div>
-                        <!-- /Game Header -->
-
-                        <!-- Game -->
-                        <div class="row">
-                            <!-- Players & Shot Counters -->
-                            <div class="col-md-9" style="height: 150px;">
-                                <!-- Player #1 -->
-                                <div class="row" style="height: 75px; padding-top: 10px;">
-                                    <h4 style="float: left; padding-top: 10px; width: 80px;">Justin</h4><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">1</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">2</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">3</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">4</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">5</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">6</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">7</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">8</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">9</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">10</span></button>
-                                    <span style="padding-left: 20px;"></span>
-                                    <button class="btn btn-primary btn3d" type="button">Start</button>
-                                    <button class="btn btn-danger btn3d" type="button">Done</button>
-                                </div>
-                                <!-- /Player #1 -->
-
-                                <!-- Player #2 -->
-                                <div class="row" style="height: 75px; padding-top: 10px;">
-                                    <h4 style="float: left; padding-top: 10px; width: 80px;">Kevin</h4><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">1</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">2</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">3</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">4</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">5</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">6</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">7</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">8</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">9</span></button><button class="btn btn-default btn-lg btn3d" type="button"><span class="glyphicon">10</span></button>
-                                    <span style="padding-left: 20px;"></span>
-                                    <button class="btn btn-primary btn3d" type="button">Start</button>
-                                    <button class="btn btn-danger btn3d" type="button">Done</button>
-                                </div>
-                                <!-- /Player #2 -->
-                            </div>
-                            <!-- /Players & Shot Counters -->
-
-                            <!-- Winner -->
-                            <div class="col-md-3" style="height: 150px;">
-                                <div class="alert alert-success" style="width: 100%; height: 100%;" role="alert">
-                                    <div style="padding-top: 18px;"><span style="font-size: 4em; font-weight: bold;">WINNER</span></div>
-                                </div>
-                            </div>
-                            <!-- /Winner -->
-                        </div>
-                        <!-- /Game -->
+                        <!-- /Winner -->
+                    </div>
+                    <!-- /Game -->
 
                 </div>
             </div>
             <!-- /#page-content-wrapper -->
-
         </div>
         <!-- /#wrapper -->
 

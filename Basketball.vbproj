@@ -209,6 +209,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ws_Basketball.asmx" />
     <EntityDeploy Include="Models\BasketballModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BasketballModel.Designer.vb</LastGenOutput>
@@ -373,6 +374,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Startup.vb" />
+    <Compile Include="ws_Basketball.asmx.vb">
+      <DependentUpon>ws_Basketball.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
