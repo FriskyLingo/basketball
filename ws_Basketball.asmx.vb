@@ -31,4 +31,95 @@ Public Class ws_Basketball
         Return theGames
     End Function
 
+    <WebMethod(EnableSession:=True)> _
+    Public Function GetRounds(roundId As String) As List(Of sec_Select_lu_Round_Result)
+        Dim theRounds As New List(Of sec_Select_lu_Round_Result)
+
+        Try
+            Using db As New BasketballContext()
+                theRounds = db.sec_Select_lu_Round(Nothing).ToList()
+            End Using
+        Catch ex As Exception
+            Throw New Exception(ex.Message, ex)
+        End Try
+
+        Return theRounds
+    End Function
+
+    <WebMethod(EnableSession:=True)> _
+    Public Function GetPlayers(playerId As String) As List(Of sec_Select_lu_Player_Result)
+        Dim thePlayers As New List(Of sec_Select_lu_Player_Result)
+
+        Try
+            Using db As New BasketballContext()
+                thePlayers = db.sec_Select_lu_Player(Nothing).ToList()
+            End Using
+        Catch ex As Exception
+            Throw New Exception(ex.Message, ex)
+        End Try
+
+        Return thePlayers
+    End Function
+
+    <WebMethod(EnableSession:=True)> _
+    Public Function GetLocations(locationId As String) As List(Of sec_Select_lu_Location_Result)
+        Dim theLocations As New List(Of sec_Select_lu_Location_Result)
+
+        Try
+            Using db As New BasketballContext()
+                theLocations = db.sec_Select_lu_Location(Nothing).ToList()
+            End Using
+        Catch ex As Exception
+            Throw New Exception(ex.Message, ex)
+        End Try
+
+        Return theLocations
+    End Function
+
+    <WebMethod(EnableSession:=True)> _
+    Public Function GetGameRounds(gameRoundId As String) As List(Of sec_Select_Game_Rounds_Result)
+        Dim theGameRounds As New List(Of sec_Select_Game_Rounds_Result)
+
+        Try
+            Using db As New BasketballContext()
+                theGameRounds = db.sec_Select_Game_Rounds(Nothing).ToList()
+            End Using
+        Catch ex As Exception
+            Throw New Exception(ex.Message, ex)
+        End Try
+
+        Return theGameRounds
+    End Function
+
+    <WebMethod(EnableSession:=True)> _
+    Public Function GetGameRoundPlayerShots(gameRoundPlayerShotsId As String) As List(Of sec_Select_Game_Round_PlayerShots_Result)
+        Dim theGameRoundPlayerShots As New List(Of sec_Select_Game_Round_PlayerShots_Result)
+
+        Try
+            Using db As New BasketballContext()
+                theGameRoundPlayerShots = db.sec_Select_Game_Round_PlayerShots(Nothing).ToList()
+            End Using
+        Catch ex As Exception
+            Throw New Exception(ex.Message, ex)
+        End Try
+
+        Return theGameRoundPlayerShots
+    End Function
+
+    <WebMethod(EnableSession:=True)> _
+    Public Function getGamePlayers(gamePlayersId As String) As List(Of sec_Select_Game_Players_Result)
+        Dim theGamePlayers As New List(Of sec_Select_Game_Players_Result)
+
+        Try
+            Using db As New BasketballContext()
+                theGamePlayers = db.sec_Select_Game_Players(Nothing).ToList()
+            End Using
+        Catch ex As Exception
+            Throw New Exception(ex.Message, ex)
+        End Try
+
+        Return theGamePlayers
+    End Function
+
+
 End Class

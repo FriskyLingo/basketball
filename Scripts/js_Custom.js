@@ -524,21 +524,6 @@ $(document)
         return 'ERROR!';
     });
 
-function helloWorld(testParam) {
-    var jqXhr = $.ajax({
-        type: "POST",
-        url: "ws_Basketball.asmx/HelloWorld",
-        data: "{testParam: '" + testParam + "'}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json"
-    }).done(function (data) {
-        //Only log to console if debugging locally
-        if (window.location.hostname == 'localhost') {
-            //"data" is a string containing the number of rows updated in the database
-            console.log(data);
-        }
-    });
-}
 
 function getGames(gameId) {
     var jqXhr = $.ajax({
